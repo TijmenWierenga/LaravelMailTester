@@ -9,7 +9,7 @@
         }
     ],
     "require": {},
-    "autoload": {
+    "autoload-dev": {
         "psr-4": {
             "TijmenWierenga\\LaravelMailTester\\": "src"
         }
