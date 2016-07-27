@@ -1,0 +1,17 @@
+{
+    "name": "tijmen-wierenga/laravel-mail-tester",
+    "description": "An extension to Laravel's TestCase which allows you to run unit tests on emails",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tijmen Wierenga",
+            "email": "tijmen@floown.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "TijmenWierenga\\LaravelMailTester\\": "src"
+        }
+    }
+}
