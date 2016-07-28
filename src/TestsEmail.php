@@ -26,6 +26,8 @@ trait TestsEmail
     public function addEmail(Swift_Message $email)
     {
         $this->emails[] = $email;
+
+        return $this;
     }
 
     /**
@@ -35,7 +37,12 @@ trait TestsEmail
      */
     public function assertEmailWasSent()
     {
-        return $this->assertTrue(! empty($this->emails), 'Asserting that an email was sent while no email was sent.');
+        $this->assertTrue(
+            ! empty($this->emails),
+            'Asserting that an email was sent while no email was sent.'
+        );
+
+        return $this;
     }
 
     /**
@@ -45,7 +52,12 @@ trait TestsEmail
      */
     public function assertNoEmailWasSent()
     {
-        return $this->assertTrue(empty($this->emails), 'Asserting that no email was sent, while ' . count($this->emails) . ' email(s) was/were sent.');
+        $this->assertTrue(
+            empty($this->emails),
+            'Asserting that no email was sent, while ' . count($this->emails) . ' email(s) was/were sent.'
+        );
+
+        return $this;
     }
 
     /**
@@ -57,7 +69,13 @@ trait TestsEmail
     public function assertEmailWasSentTo($email)
     {
         $recipient = key($this->emails[0]->getTo());
-        return $this->assertEquals($recipient, $email, 'Excepted recipient of email to be "' . $email . '", actual recipient was "' . $recipient . '".');
+
+        $this->assertEquals(
+            $recipient, $email,
+            'Excepted recipient of email to be "' . $email . '", actual recipient was "' . $recipient . '".'
+        );
+
+        return $this;
     }
 
     /**
@@ -69,7 +87,13 @@ trait TestsEmail
     public function assertEmailWasSentFrom($email)
     {
         $sender = key($this->emails[0]->getFrom());
-        return $this->assertEquals($sender, $email, 'Excepted sender of email to be "' . $email . '", actual sender was "' . $sender . '".');
+
+        $this->assertEquals(
+            $sender, $email,
+            'Excepted sender of email to be "' . $email . '", actual sender was "' . $sender . '".'
+        );
+
+        return $this;
     }
 
     /**
@@ -82,6 +106,11 @@ trait TestsEmail
     {
         $body = $this->emails[0]->getBody();
 
-        return $this->assertTrue(strpos($body, $string) !== false, 'Asserted that "' . $string . '" was in the email body, but it was not."');
+        $this->assertTrue(
+            strpos($body, $string) !== false,
+            'Asserted that "' . $string . '" was in the email body, but it was not."'
+        );
+
+        return $this;
     }
 }
