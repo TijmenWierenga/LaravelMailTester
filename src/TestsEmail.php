@@ -27,4 +27,14 @@ trait TestsEmail
     {
         $this->emails[] = $email;
     }
+
+    /**
+     * Checks if an email was sent.
+     *
+     * @return bool
+     */
+    public function assertEmailWasSent()
+    {
+        return $this->assertTrue(! empty($this->emails), 'Asserting that an email was sent while no email was sent.');
+    }
 }
