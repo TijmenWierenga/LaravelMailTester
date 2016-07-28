@@ -37,4 +37,14 @@ trait TestsEmail
     {
         return $this->assertTrue(! empty($this->emails), 'Asserting that an email was sent while no email was sent.');
     }
+
+    /**
+     * Checks if no emails were sent.
+     *
+     * @return mixed
+     */
+    public function assertNoEmailWasSent()
+    {
+        return $this->assertTrue(empty($this->emails), 'Asserting that no email was sent, while ' . count($this->emails) . ' email(s) was/were sent.');
+    }
 }
