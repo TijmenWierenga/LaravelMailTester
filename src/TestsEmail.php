@@ -47,4 +47,16 @@ trait TestsEmail
     {
         return $this->assertTrue(empty($this->emails), 'Asserting that no email was sent, while ' . count($this->emails) . ' email(s) was/were sent.');
     }
+
+    /**
+     * Checks if email sent to a specific email address
+     *
+     * @param $email
+     * @return mixed
+     */
+    public function assertEmailWasSentTo($email)
+    {
+        $recipient = key($this->emails[0]->getTo());
+        return $this->assertEquals($recipient, $email, 'Excepted recipient of email to be "' . $email . '", actual recipient was "' . $recipient . '".');
+    }
 }
