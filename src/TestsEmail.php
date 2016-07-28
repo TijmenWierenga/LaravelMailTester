@@ -49,7 +49,7 @@ trait TestsEmail
     }
 
     /**
-     * Checks if email sent to a specific email address
+     * Checks if email was sent to a specific email address
      *
      * @param $email
      * @return mixed
@@ -58,5 +58,30 @@ trait TestsEmail
     {
         $recipient = key($this->emails[0]->getTo());
         return $this->assertEquals($recipient, $email, 'Excepted recipient of email to be "' . $email . '", actual recipient was "' . $recipient . '".');
+    }
+
+    /**
+     * Checks is email was sent from a specific email address
+     *
+     * @param $email
+     * @return mixed
+     */
+    public function assertEmailWasSentFrom($email)
+    {
+        $sender = key($this->emails[0]->getFrom());
+        return $this->assertEquals($sender, $email, 'Excepted sender of email to be "' . $email . '", actual sender was "' . $sender . '".');
+    }
+
+    /**
+     * Checks if email contains a specified string.
+     *
+     * @param $string
+     * @return mixed
+     */
+    public function assertEmailBodyContains($string)
+    {
+        $body = $this->emails[0]->getBody();
+
+        return $this->assertTrue(strpos($body, $string) !== false, 'Asserted that "' . $string . '" was in the email body, but it was not."');
     }
 }
