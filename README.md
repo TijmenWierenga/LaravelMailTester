@@ -44,7 +44,7 @@ class AuthenticationTest extends TestCase
     }
     
     $this->assertEmailWasSent()
-      ->assertEmailWasSentTo('tijmen@floown.com)
+      ->assertEmailWasSentTo('tijmen@floown.com')
       ->assertEmailWasSentFrom('no-reply@floown.com')
       ->assertEmailBodyContains('awesome email testing')
   }
